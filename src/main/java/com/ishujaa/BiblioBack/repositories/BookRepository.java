@@ -14,5 +14,5 @@ import java.util.Optional;
 public interface BookRepository extends JpaRepository<BookEntity, Integer> {
 
     List<BookEntity> findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(String title, String author);
-
+    List<BookEntity> findByIsAvailableTrue();
 }

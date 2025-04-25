@@ -84,4 +84,11 @@ public class BookService {
                 .stream().map(bookEntity -> modelMapper.map(bookEntity, BookDTO.class))
                 .toList();
     }
+
+    public List<BookDTO> getAllAvailable() {
+        return bookRepository
+                .findByIsAvailableTrue()
+                .stream().map(bookEntity -> modelMapper.map(bookEntity, BookDTO.class))
+                .toList();
+    }
 }

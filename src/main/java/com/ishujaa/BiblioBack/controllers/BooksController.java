@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Book;
 import java.util.List;
 
 //OPERATIONS
@@ -55,6 +56,11 @@ public class BooksController {
     @GetMapping("/search")
     public List<BookDTO> search(@RequestParam("q") String query){
         return bookService.search(query);
+    }
+
+    @GetMapping("/available")
+    public List<BookDTO> getAllAvailable(){
+        return bookService.getAllAvailable();
     }
 
 }
