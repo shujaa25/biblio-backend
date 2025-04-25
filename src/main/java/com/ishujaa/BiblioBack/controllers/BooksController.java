@@ -3,6 +3,7 @@ package com.ishujaa.BiblioBack.controllers;
 import com.ishujaa.BiblioBack.dto.BookDTO;
 import com.ishujaa.BiblioBack.model.BookEntity;
 import com.ishujaa.BiblioBack.services.BookService;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -49,6 +50,11 @@ public class BooksController {
     @DeleteMapping(path = "/{id}")
     public boolean deleteBook(@PathVariable("id") Integer id){
         return bookService.deleteBook(id);
+    }
+
+    @GetMapping("/search")
+    public List<BookDTO> search(@RequestParam("q") String query){
+        return bookService.search(query);
     }
 
 }

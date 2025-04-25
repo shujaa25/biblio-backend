@@ -77,4 +77,11 @@ public class BookService {
 
         return new BookDTO();
     }
+
+    public List<BookDTO> search(String query) {
+        return bookRepository
+                .findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(query, query)
+                .stream().map(bookEntity -> modelMapper.map(bookEntity, BookDTO.class))
+                .toList();
+    }
 }
